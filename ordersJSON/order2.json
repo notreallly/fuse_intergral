@@ -1,0 +1,18 @@
+{
+   "id":null,
+   "orderDate":1480454850000,
+   "discount":0.00,
+   "delivered":false,
+   "orderItems":[
+      {
+         "id":null,
+         "quantity":4,
+         "extPrice":10.00
+      },
+      {
+         "id":null,
+         "quantity":1,
+         "extPrice":38.00
+      }
+   ]
+}
