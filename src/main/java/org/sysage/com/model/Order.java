@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "order_")
-@NamedQuery(name = "getUndeliveredOrders", query = "select o from Order o where 0.delivered = false")
+@NamedQuery(name = "getUndeliveredOrders", query = "select o from Order o where o.delivered = false")
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Order implements Serializable {
