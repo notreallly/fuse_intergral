@@ -30,12 +30,12 @@ import org.sysage.com.model.Order;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(CamelSpringRunner.class)
-@ContextConfiguration(locations = { "/spring/bundle-camel-context.xml" })
+@ContextConfiguration(locations = { "/spring/camel-context.xml" })
 @UseAdviceWith(true)
 @Transactional(transactionManager = "transactionManager")
 public class TransformRouteTest {
 
-	private static final String TEST_FILE_DIR = "C:\\Users\\stevewu\\workspace\\camel_test\\ordersJSON";
+	private static final String TEST_FILE_DIR = "C:\\Users\\stevewu\\workspace\\fuse_intergral\\ordersJSON";
 
 	@Autowired
 	public CamelContext camelContext;
