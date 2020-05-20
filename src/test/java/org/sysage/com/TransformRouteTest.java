@@ -1,4 +1,4 @@
-package corp.sysage.com;
+package org.sysage.com;
 
 import static org.junit.Assert.*;
 
@@ -81,7 +81,7 @@ public class TransformRouteTest {
 	}
 
 	private void clearStaleData() throws InterruptedException {
-		Query q = em.createQuery("from Order o", Order.class);
+		Query q = em.createQuery("from order_ o", Order.class);
 		List<Order> orders = (List<Order>) q.getResultList();
 		for (Order o : orders) {
 			em.remove(o);

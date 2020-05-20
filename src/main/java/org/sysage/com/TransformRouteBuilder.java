@@ -4,7 +4,7 @@ import org.apache.camel.builder.RouteBuilder;
 
 public class TransformRouteBuilder extends RouteBuilder {
 
-	public static String OUTPUT_FOLDER = "C:\\Users\\stevewu\\workspace\\camel_test";
+	public static String OUTPUT_FOLDER = "C:\\Users\\stevewu\\workspace\\fuse_intergral\\orders\\outgoing";
 
 	public static Integer BATCH_TIMEOUT = 10000;
 
