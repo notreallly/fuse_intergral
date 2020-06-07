@@ -1,25 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       https://camel.apache.org/schema/spring/camel-spring.xsd">
-    <bean class="org.sysage.com." id=""/>
-    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory"/>
-        <property name="dataSource" ref="mysqlDataSource"/>
-    </bean>
-    <bean
-        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
-        <property name="persistenceXmlLocation" value="classpath:./persistence.xml"/>
-        <property name="persistenceUnitName" value="mysql"/>
-        <property name="dataSource" ref="mysqlDataSource"/>
-    </bean>
-    <bean
-        class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="mysqlDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://10.9.42.24:3306/webdb?useSSL=false"/>
-        <property name="username" value="web"/>
-        <property name="password" value="apps"/>
-    </bean>
+    <bean class="org.sysage.com.routes.OrderRouteBuilder"
+        id="orderRouteBuilder" scope="singleton"/>
+    <bean class="org.sysage.com.beans.Performance"
+        destroy-method="dumpStats" id="performance" scope="singleton"/>
+    <bean class="org.sysage.com.beans.AssignBatchNumber"
+        id="assignBatch" scope="singleton"/>
+    <bean class="org.sysage.com.beans.BatchBean" id="batch" scope="singleton"/>
+    <bean class="org.sysage.com.beans.OrderBean" id="order" scope="singleton"/>
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
-        <routeBuilder ref=""/>
+        <routeBuilder ref="orderRouteBuilder"/>
     </camelContext>
 </beans>
