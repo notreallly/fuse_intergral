@@ -202,15 +202,26 @@ public class OrderRouteTest extends CamelSpringTestSupport {
 		Assert.assertNotNull("Check /tmp/audit/large endpoint", largeAuditEndpoint);
 	}
 
-	private final static String CSV_ORDER_1 = "";
+	private final static String CSV_ORDER_1 = "John Doe,11/10/16,123 Easy St,AS,14.0\n"
+			+ "Amy Smith,10/31/16,2 Knightdown Ave,CA,28.0\n"
+			+ "Terry Jones,11/02/16,2 Baker St,OR,15.0";
 
-	private final static String CSV_ORDER_2 = "";
+	private final static String CSV_ORDER_2 = "Mary Doe,11/10/16,123 Easy St,AS,42.0\n"
+			+ "Paul Smith,10/31/16,123 Easy St,AS,42.0\n"
+			+ "Mike Jones,11/02/16,2 Baker St,OR,45.00";
 
-	private final static String[] XML_ORDER_1 = new String[] {};
+	private final static String[] XML_ORDER_1 = new String[] {
+			"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" + 
+			"<order name=\"John Doe\" orderDate=\"2016-11-10T00:00:00-05:00\" street=\"123 Easy St\" state=\"**\" extendedAmount=\"14.00\"/>",
+			"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" + 
+			"<order name=\"Amy Smith\" orderDate=\"2016-10-31T00:00:00-04:00\" street=\"2 Knightdown Ave\" state=\"**\" extendedAmount=\"28.00\"/>",
+			"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" + 
+			"<order name=\"Terry Jones\" orderDate=\"2016-11-02T00:00:00-04:00\" street=\"2 Baker St\" state=\"**\" extendedAmount=\"15.00\"/>"
+	};
 
 	@Override
 	protected AbstractApplicationContext createApplicationContext() {
-		return new ClassPathXmlApplicationContext("/META-INF/spring/camel-context.xml");
+		return new ClassPathXmlApplicationContext("/spring/camel-context.xml");
 	}
 
 	@Override

@@ -12,7 +12,7 @@ public class OrderRouteBuilder extends RouteBuilder {
 	public void configure() throws Exception {
 		
 		//TODO read classes from the com.redhat.training.model package for JAXB
-		JaxbDataFormat df = new JaxbDataFormat("com.redhat.training.model");
+		JaxbDataFormat df = new JaxbDataFormat("org.sysage.com.model");
 		// TODO Read only orders with the following file name: orders-v1-.*.csv"
 		from("file:/tmp/data/orders1?include=orders-v1-.*.csv")
 			.routeId("OrderRoute1")
@@ -26,6 +26,7 @@ public class OrderRouteBuilder extends RouteBuilder {
 			.end()
 			//TODO Call the processor named assignBatch configured in camel-context.xml
 			.process("assignBatch")
+			.bean("performance", "start")
 			//TODO log each batch number to the console
 			.log("Processing file: ${header.CamelFileName} in Batch ${header.batchNumber}")
 			//TODO Convert each exchange to a Order object using Bindy
